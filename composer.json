@@ -21,7 +21,9 @@
         "laravel/sail": "^0.0.5",
         "mockery/mockery": "^1.4.2",
         "nunomaduro/collision": "^5.0",
-        "phpunit/phpunit": "^9.3.3"
+        "phpunit/phpunit": "^9.3.3",
+        "psalm/plugin-laravel": "^1.4",
+        "vimeo/psalm": "^4.3"
     },
     "config": {
         "optimize-autoloader": true,
@@ -31,7 +33,14 @@
     "extra": {
         "laravel": {
             "dont-discover": []
-        }
+        },
+	"hooks": {
+	   "pre-commit":[
+		"echo commiting as $(git config user.name)",
+		"./vendor/bin/psalm --show=true"	
+	   ],
+	   "commit-msg": "grep -q '[A-Z]+-[0-9]+.*'$1"
+	}
     },
     "autoload": {
         "psr-4": {
