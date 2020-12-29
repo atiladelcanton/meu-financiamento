@@ -34,13 +34,13 @@
         "laravel": {
             "dont-discover": []
         },
-	"hooks": {
-	   "pre-commit":[
-		"echo commiting as $(git config user.name)",
-		"./vendor/bin/psalm --show=true"	
-	   ],
-	   "commit-msg": "grep -q '[A-Z]+-[0-9]+.*'$1"
-	}
+        "hooks": {
+            "pre-commit": [
+                "echo commiting as $(git config user.name)",
+                "./vendor/bin/psalm --show=true"
+            ],
+            "commit-msg": "grep -q '[A-Z]+-[0-9]+.*'$1"
+        }
     },
     "autoload": {
         "psr-4": {
